@@ -2153,7 +2153,11 @@ main(int argc, char *argv[])
 	if (argc > 0)
 		arg.v = argv[0];
 	else
-		arg.v = "about:blank";
+#ifdef HOMEPAGE
+		arg.v = HOMEPAGE;
+#else
+		arg.v = "https://searx.bar";
+#endif
 
 	setup();
 	c = newclient(NULL);
@@ -2167,3 +2171,4 @@ main(int argc, char *argv[])
 
 	return 0;
 }
+
